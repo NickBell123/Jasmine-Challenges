@@ -1,25 +1,39 @@
-describe("Calculator", function() {
-   
-    beforeEach(function(){
-       calc = new Calculator;
+describe("My fizzBuzz function", function() {
+    
+    beforeEach(function() {
+        fizzbuzz = new fizzBuzz();
     });
     
+    describe("Returns number, fizz, buzz or fizzbuzz", function() {
+        
+        it("should exist", function() {
+           
+            expect(fizzBuzz).toBeDefined();
+        });
 
-    describe("Addition tests", function(){
-        it("should return 42", function(){
-          calc.add(20);
-          calc.add(22);
-          expect(calc.value).toBe(42);  
+        it("should return an error if we don't input a number",function(){
+            var result = fizzBuzz("NaN")
+            expect(result).toBe("ERROR!")
         });
-        it("should return 26", function(){
-            calc.add(19);
-            calc.add(7);
-            expect(calc.value).toBe(26)
+        
+        it("should return Fizz when called as fizzBuzz(9)", function() {
+            var result = fizzBuzz(9)
+            expect(result).toBe("Fizz");
         });
-        it("should return error if we don't supply two numbers", function(){
-            spyOn(window,"alert");
-            calc.add("Hitchikers");
-            expect(window.alert).toHaveBeenCalledWith("Error");
+        
+        it("should return Buzz when called as fizzBuzz(10)", function() {
+            var result = fizzBuzz(10)
+            expect(result).toBe("Buzz");
+        });
+
+        it("should return FizzBuzz when called as fizzBuzz(30)", function() {
+            var result = fizzBuzz(30)
+            expect(result).toBe("FizzBuzz");
+        });
+
+        it("should return 1 when called as fizzBuzz(1)", function() {
+            var result = fizzBuzz(1)
+            expect(result).toBe(1);
         });
     });
 });
